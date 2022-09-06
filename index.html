@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="index.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    var c,ctx;
+onload=setInterval(randomize,1000);
+
+//function to generate random circle parameters, x,y and radius
+
+function randomize(){
+ // console.log("here");
+  c = document.getElementById("canvas");
+  ctx = c.getContext("2d");
+  var rr = 8;
+  var rx = Math.ceil(290* Math.random());
+  var ry = Math.ceil(290* Math.random());
+  
+  drawCircle(rx,ry,rr);  
+}
+function drawCircle(rx,ry,rr){
+  var myColors  =["blue","red","green","yellow"];
+  var colorPicker = Math.ceil(4* Math.random() -1);
+  ctx.strokeStyle = myColors[colorPicker];
+  ctx.beginPath();
+  ctx.arc(rx,ry,rr,0,2*Math.PI);
+  ctx.stroke();
+  ctx.fill();
+  ctx.closePath();
+}
+  </script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 540px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    .storelayout{
+        width: 90%;
+        height: 490px;
+        background-image: url('store.png');
+        background-size: contain;
+        background-size: cover;
+        position: absolute;
+
+    }
+    #canvas{
+  display:inline;
+  margin-top: 35px;
+  margin-left: 35px;
+  position: relative;
+}
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Live Store Visualization</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a>Live Count</a></li>
+        <li><a>Rack 1 : 2 person </a></li>
+        <li><a>Rack 2 : 4 person </a></li>
+        <li><a>Rack 3 : 1 person</a></li>
+      </ul><br>
+      
+    </div>
+
+    <div class="col-sm-9">
+
+        <div class="storelayout">
+        <canvas id = "canvas"  height = "100px" width = "600px"></canvas>
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+</body>
+</html>
